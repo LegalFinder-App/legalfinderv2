@@ -6,11 +6,11 @@ import { IMG } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
-  { to: "/lawyers", label: "Find an advocate" },
-  { to: "/advice", label: "Legal advice" },
-  { to: "/library", label: "Law library" },
-  { to: "/news", label: "News & tips" },
-  { to: "/safety", label: "Public safety" },
+  { to: "#advocates", label: "Find an advocate" },
+  { to: "#advice", label: "Legal advice" },
+  { to: "#library", label: "Law library" },
+  { to: "#news", label: "News & tips" },
+  { to: "#safety", label: "Public safety" },
 ];
 
 export function SiteHeader() {
@@ -27,26 +27,22 @@ export function SiteHeader() {
 
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
-            <Link
+            <a
               key={item.to}
-              to={item.to}
+              href={item.to}
               className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              activeProps={{ className: "text-foreground bg-accent" }}
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
-          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-            <Link to="/auth">Sign in</Link>
-          </Button>
           <Button asChild size="sm" className="bg-crimson text-crimson-foreground hover:bg-crimson/90">
-            <Link to="/auth">
+            <a href="#advocates">
               <Scale className="mr-1.5 h-4 w-4" />
               Get help
-            </Link>
+            </a>
           </Button>
           <Button
             variant="ghost"
@@ -63,14 +59,14 @@ export function SiteHeader() {
       {open ? (
         <nav className="border-t border-border bg-background px-4 py-2 lg:hidden">
           {NAV.map((item) => (
-            <Link
+            <a
               key={item.to}
-              to={item.to}
+              href={item.to}
               onClick={() => setOpen(false)}
               className="block rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
       ) : null}
@@ -94,24 +90,24 @@ export function SiteFooter() {
         <FooterCol
           title="Services"
           links={[
-            { to: "/lawyers", label: "Find an advocate" },
-            { to: "/advice", label: "Legal advice" },
-            { to: "/library", label: "Law library" },
+            { to: "#advocates", label: "Find an advocate" },
+            { to: "#advice", label: "Legal advice" },
+            { to: "#library", label: "Law library" },
           ]}
         />
         <FooterCol
           title="Public"
           links={[
-            { to: "/news", label: "News & security tips" },
-            { to: "/safety", label: "Police stations" },
-            { to: "/safety", label: "Wanted notices" },
+            { to: "#news", label: "News & security tips" },
+            { to: "#safety", label: "Police stations" },
+            { to: "#safety", label: "Wanted notices" },
           ]}
         />
         <FooterCol
           title="Account"
           links={[
-            { to: "/auth", label: "Sign in" },
-            { to: "/auth", label: "Create an account" },
+            { to: "#advocates", label: "Browse advocates" },
+            { to: "#advice", label: "Read guides" },
           ]}
         />
       </div>
@@ -131,9 +127,9 @@ function FooterCol({ title, links }: { title: string; links: { to: string; label
       <ul className="mt-3 space-y-2">
         {links.map((l, i) => (
           <li key={`${l.to}-${i}`}>
-            <Link to={l.to} className="text-sm text-primary-foreground/70 hover:text-primary-foreground">
+            <a href={l.to} className="text-sm text-primary-foreground/70 hover:text-primary-foreground">
               {l.label}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
